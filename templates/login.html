@@ -1,0 +1,37 @@
+{% extends "base.html"%}
+
+{% block titulo%}
+Autenticación de usuario
+{% endblock %}
+
+{% block contenido%}
+
+    <div class="m-5 text-center">
+        <form action="" method="post" novalidate>
+
+            {{frm.hidden_tag() }}
+
+            <div class="m-4">
+                {{frm.cedula.label}}
+                {{frm.cedula}}
+                {% for error in frm.cedula.errors %}
+                <div>
+                    {{error}}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="m-4">
+                {{frm.contraseña.label}}
+                {{frm.contraseña}}
+                {% for error in frm.contraseña.errors %}
+                <div>
+                    {{error}}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="m-4">
+                {{frm.iniciar}}
+            </div>
+        </form>
+    </div>
+{% endblock %}

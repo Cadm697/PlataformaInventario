@@ -1,0 +1,63 @@
+{% extends "base.html"%}
+
+{% block titulo%}
+    Listar usuarios
+{% endblock %}
+
+{% block contenido%}
+
+    {% for msg in get_flashed_messages() %}
+    <div>
+        {{ msg }}
+    </div>
+    {% endfor %}
+
+    <div class=m-5>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark"> 
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Celular</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in rows %}
+                    <tr>
+                        <td>
+                            {{ u["codigo"]}}
+                        </td>
+                        <td>
+                            {{ u["nombre"]}}
+                        </td>
+                        <td>
+                            {{ u["apellido"]}}
+                        </td>
+                        <td>
+                            {{ u["cedula"]}}
+                        </td>
+                        <td>
+                            {{ u["celular"]}}
+                        </td>
+                        <td>
+                            {{ u["categoria"]}}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('editarUsuario', codigo=u['codigo']) }}" class="btn btn-info" >Editar</a>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('eliminarUsuario', codigo=u['codigo']) }}" class="btn btn-danger" >Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

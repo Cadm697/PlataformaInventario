@@ -1,0 +1,68 @@
+{% extends "base.html"%}
+
+{% block titulo%}
+    Registrar Producto
+{% endblock %}
+
+{% block contenido%} 
+    <div class="m-5 text-center">
+        <form action="" method="post" novalidate>
+            {{ frm.hidden_tag() }}
+            
+            <div class="mb-3">
+                {{frm.nombre.label}}
+                {{frm.nombre}}
+                {% for error in frm.nombre.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.descripcion.label}}
+                {{frm.descripcion}}
+                {% for error in frm.descripcion.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.cantidad_minima.label}}
+                {{frm.cantidad_minima}}
+                {% for error in frm.cantidad_minima.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.cantidad_bodega.label}}
+                {{frm.cantidad_bodega}}
+                {% for error in frm.cantidad_bodega.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.id_proveedor.label}}
+                {{frm.id_proveedor}}
+                {% for error in frm.id_proveedor.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ frm.guardar }}
+            </div>
+        </form>
+    </div>
+    {% for msg in get_flashed_messages() %}
+        <div>
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

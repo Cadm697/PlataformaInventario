@@ -1,0 +1,77 @@
+{% extends "base.html"%}
+
+{% block titulo%}
+    Registrar usuario
+{% endblock %}
+
+{% block contenido%} 
+    <div class="m-5 text-center">
+        <form action="" method="post" novalidate>
+            {{ frm.hidden_tag() }}
+            
+            <div class="mb-3">
+                {{frm.nombre.label}}
+                {{frm.nombre}}
+                {% for error in frm.nombre.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.apellido.label}}
+                {{frm.apellido}}
+                {% for error in frm.apellido.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.cedula.label}}
+                {{frm.cedula}}
+                {% for error in frm.cedula.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.celular.label}}
+                {{frm.celular}}
+                {% for error in frm.celular.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.categoria.label}}
+                {{frm.categoria}}
+                {% for error in frm.categoria.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.contraseña.label}}
+                {{frm.contraseña}}
+                {% for error in frm.contraseña.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ frm.guardar }}
+            </div>
+        </form>
+    </div>
+    {% for msg in get_flashed_messages() %}
+        <div>
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

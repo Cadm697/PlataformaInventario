@@ -1,0 +1,108 @@
+{% extends "base.html"%}
+
+{% block titulo%}
+    Listar Productos
+{% endblock %}
+
+{% block contenido%}
+
+    {% for msg in get_flashed_messages() %}
+    <div>
+        {{ msg }}
+    </div>
+    {% endfor %}
+
+    {% if rows %}
+    <div class=m-5>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark"> 
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Decripción</th>
+                    <th>Cantidad Minima</th>
+                    <th>Cantidad Bodega</th>
+                    <th>Id Proveedor</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in rows %}
+                    <tr>
+                        <td>
+                            {{ u["id"]}}
+                        </td>
+                        <td>
+                            {{ u["nombre"]}}
+                        </td>
+                        <td>
+                            {{ u["descripcion"]}}
+                        </td>
+                        <td>
+                            {{ u["cantidad_minima"]}}
+                        </td>
+                        <td>
+                            {{ u["cantidad_bodega"]}}
+                        </td>
+                        <td>
+                            {{ u["id_proveedor"]}}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('editarProducto', id=u['id']) }}" class="btn btn-info" >Editar</a>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('eliminarProducto', id=u['id']) }}" class="btn btn-danger" >Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif  %}
+    {% if pedir %}
+    <div class=m-5>
+        <table class="table table-striped table-bordered">
+            <thead class="table-danger"> 
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Decripción</th>
+                    <th>Cantidad Minima</th>
+                    <th>Cantidad Bodega</th>
+                    <th>Id Proveedor</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in pedir %}
+                    <tr>
+                        <td>
+                            {{ u["id"]}}
+                        </td>
+                        <td>
+                            {{ u["nombre"]}}
+                        </td>
+                        <td>
+                            {{ u["descripcion"]}}
+                        </td>
+                        <td>
+                            {{ u["cantidad_minima"]}}
+                        </td>
+                        <td>
+                            {{ u["cantidad_bodega"]}}
+                        </td>
+                        <td>
+                            {{ u["id_proveedor"]}}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('editarProducto', id=u['id']) }}" class="btn btn-info" >Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

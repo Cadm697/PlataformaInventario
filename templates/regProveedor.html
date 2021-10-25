@@ -1,0 +1,59 @@
+{% extends "base.html"%}
+
+{% block titulo%}
+    Registrar Proveedor
+{% endblock %}
+
+{% block contenido%} 
+    <div class="m-5 text-center">
+        <form action="" method="post" novalidate>
+            {{ frm.hidden_tag() }}
+            
+            <div class="mb-3">
+                {{frm.nombre.label}}
+                {{frm.nombre}}
+                {% for error in frm.nombre.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.nit.label}}
+                {{frm.nit}}
+                {% for error in frm.nit.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.telefono.label}}
+                {{frm.telefono}}
+                {% for error in frm.telefono.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{frm.correo.label}}
+                {{frm.correo}}
+                {% for error in frm.correo.errors %}
+                    <div>
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ frm.guardar }}
+            </div>
+        </form>
+    </div>
+    {% for msg in get_flashed_messages() %}
+        <div>
+            {{ msg }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
