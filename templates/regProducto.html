@@ -46,13 +46,13 @@
                 {% endfor %}
             </div>
             <div class="mb-3">
-                {{frm.id_proveedor.label}}
-                {{frm.id_proveedor}}
-                {% for error in frm.id_proveedor.errors %}
-                    <div>
-                        {{error}}
-                    </div>
-                {% endfor %}
+                <label for="id_proveedor">Proveedores</label>
+                <select name="id_proveedor" id="id_proveedor">
+                    <option value="">Selecciona el proveedor...</option>
+                    {% for p in proveedores %}
+                        <option value="{{p.id}}" {% if id_proveedor == p.id %} selected {% endif %}>{{p.nombre}}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="mb-3">
                 {{ frm.guardar }}
